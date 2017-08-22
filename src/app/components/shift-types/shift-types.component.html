@@ -1,0 +1,63 @@
+<div *ngIf="(isAdmin)" class="row" id="schemaGenerator">
+    <!--<form class="col-md-2 col-md-offset-5" (submit)="addEmployee()">-->
+      <div class="col-md-2 col-md-offset-1">
+        <h4>Skifttyper</h4>
+        <table class="table table-condensed table-striped" style="white-space: nowrap">
+          <thead>
+            <tr>
+              <th>
+                Namn
+              </th>
+              <th>
+                Beskrivning
+              </th>
+              <th>
+                Kräver Visningsklar
+              </th>
+              <th>
+                Uppdatera
+              </th>
+              <th class="text-center">
+                Ta bort
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let shift of shifts; let i = index">
+              <td>{{shift.name}}</td>
+              <td>{{shift.description}}</td>
+              <td class="text-center" [innerHtml]="getBool(shift.requiresTourReady)"></td>
+              <td class="text-center">
+                <div class="btn btn-basic btn-sm" (click)="editShift(shift.name, shift.description, shift.requiresTourReady, shift.$key)"><span class="glyphicon glyphicon-pencil"></span></div>
+              </td>
+              <td class="text-center">
+                <div class="btn btn-basic btn-sm" (click)="deleteShift(shift.$key)"><span class="glyphicon glyphicon-trash"></span></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <form class="col-md-2 col-md-offset-6" (submit)="addShift()">
+        <h4>Lägg till skift</h4>
+        <div class="form-group">
+              <label>Namn (förkortning)</label>
+              <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+          </div>
+          <div class="form-group">
+              <label>Beskrivning</label>
+              <input class="form-control" type="text" [(ngModel)]="description" name="description" required>
+          </div>
+          <div class="form-group" >
+              <label>Kräver Visningsklar</label>
+              <select class="form-control employeeName" type="text" [(ngModel)]=requiresTourReady (ngModelChange)="selectRequiresTourReady($event)" name="tableType" required>
+                  <option value="true">Ja</option>
+                  <option value="false">Nej</option>
+              </select>
+          </div>
+          <input type="submit" value="Spara" class="btn btn-success">
+          <div class="btn btn-primary" (click)="clearShift()">Rensa</div>
+          <br>
+          <br>
+    </form>
+
+</div>

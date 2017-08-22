@@ -1,0 +1,129 @@
+
+@media(max-width: 570px) {
+    #schemaGenerator2 {
+        font-size: 12px;
+    }
+    #formattedDate {
+        font-size: 14px !important;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 6px !important;
+    }
+    .btn-change {
+        font-size: 10px;
+    }
+    .table {
+         margin-left: -14px;
+    }
+}
+
+.legend {
+    font-size: small;
+    font-weight: normal;
+    border-top: 0px red solid;
+}
+
+.currentHour {
+    /*  background-color: #f0f2f4; */
+     background-color: #99c9ff;
+}
+
+.shiftHover:hover {
+     background-color: black;
+   //font-size: large;
+}
+
+.currentIndex {
+
+    background-color: #e5f1ff;
+
+}
+
+.currentEmployee {
+
+    font-weight: bold;
+}
+
+.currentName {
+    font-size: large;
+
+}
+
+.table {
+    text-align: center;
+}
+
+.employeeName {
+    text-align: right;
+    font-weight: bold;
+}
+
+.hour {
+    font-weight: bold;
+}
+
+.timeCell {
+    font-weight: bold;
+}
+
+.timeCellExport {
+    font-weight: bold;
+    width: 30px;
+    vertical-align: bottom !important; 
+}
+
+
+
+.empNameExport {
+    width: 70px;
+    text-align: right;
+    font-weight: bold;
+}
+#empName_td {
+    width: 70px;
+}
+
+
+
+#title {
+    width: 300px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.form-control {
+    width: 70px;
+    padding: 5px 5px;
+    margin-right: 0;
+}
+
+.employeeName {
+     width: 140px;
+    padding: 5px 5px 5px;
+    margin-right: 0;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+
+.info {
+    width: 700px;
+    font-weight: bold;
+}
+
+.infoExport {
+    font-weight: bold;
+}
+
+#formattedDate {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.shiftCell {
+    text-align: center;
+}
+
+#shiftLegend {
+    font-weight: normal;
+}

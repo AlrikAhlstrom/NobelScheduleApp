@@ -1,0 +1,45 @@
+<div *ngIf="isEmployee">
+	<div *ngIf="schedule" class="container" id="schemaGenerator2">
+		<div>
+			<br/>
+			<div id="formattedDate"><p>{{schedule.title}}</p></div>
+			<br/>
+			<table  class="table table-striped table-bordered" >
+				<thead>
+					<tr>
+						<td id="empNameHead"></td>    
+						<td class="timeCellExport" *ngFor="let hour of schedule.tableData; let y = index">{{hour.hour}}</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr  *ngFor="let row of schedule.employees; let r = index">
+						<td class="empNameExport">
+							{{schedule.employees[r].name}}
+						</td>
+						<td  *ngFor="let hour of schedule.tableData; let h = index" class="shiftCell" style="text-transform: uppercase">
+							{{schedule.tableData[h].assignedShifts[r]}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="margin-right: 0;" class="pull-right">
+				<a class="btn btn-small btn-success " [routerLink]="['/schedulecreator/'+ year + '/' + month + '/' + schedule.$key]">Ändra</a>
+				<br>
+				<br>
+				<div *ngIf="schedule.editedBy" class="pull-right text-right" >
+					<p class="text-left">senast ändrad av:</p>
+					<p>{{schedule.editedBy}}</p>
+				</div>
+		</div>
+			<br>
+			<br>
+			<div class="infoExport">
+				Ansvarig: {{schedule.responsible}}
+			<div>
+					<br>
+			<div class="infoExport">
+				{{schedule.info}}
+			<div>
+			<br>
+	</div>
+</div>

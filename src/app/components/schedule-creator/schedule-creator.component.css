@@ -1,0 +1,85 @@
+.shiftButton{
+
+    margin-top:30px;
+
+}
+
+.lunchClass {
+    color: red;
+}
+
+.required {
+    border: solid red 2px;
+}
+
+.timeCell {
+    text-align: center;
+    font-weight: bold;
+}
+
+.timeCellExport {
+    text-align: center;
+    font-weight: bold;
+    width: 30px;
+}
+.empNameExport {
+    width: 70px;
+    text-align: right;
+    font-weight: bold;
+}
+#empNameHead {
+    width: 70px;
+}
+
+input.shiftInput {
+    text-transform: uppercase;
+}
+
+#title {
+    width: 300px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.form-control {
+    width: 70px;
+    padding: 5px 5px;
+    margin-right: 0;
+}
+
+.employeeName {
+     width: 140px;
+    padding: 5px 5px 5px;
+    margin-right: 0;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+
+.info {
+    width: 700px;
+    font-weight: bold;
+}
+
+.infoExport {
+    font-weight: bold;
+}
+
+.missingShiftList {
+
+    padding-left: 0;
+    list-style: none;
+}
+
+#formattedDate {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.shiftCell {
+    text-align: center;
+}
+
+#shiftLegend {
+    font-weight: normal;
+}

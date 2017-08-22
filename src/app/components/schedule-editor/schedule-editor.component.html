@@ -1,0 +1,147 @@
+<div class="container" id="schemaGenerator">
+    <br>
+    <div>
+      <h4 style="font-weight: bold">{{schedule.title}}</h4>
+    </div>
+    <br>
+    <br>
+        <table  *ngIf="(schedule.tableData)" class="table table-striped table-bordered" style="white-space: nowrap">
+            <thead>
+                <tr>
+                    <td >Personal</td>    
+                    <td class="timeCell" *ngFor="let hour of schedule.tableData; let y = index">{{hour.hour}}</td>
+                    <td >Lunch?</td>
+                    <td style="width: 0px">Ta bort</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of schedule.employees; let r = index">
+                    <td>
+                        <div class="form-group" >
+                            <select class="form-control employeeName" type="text" [(ngModel)]=schedule.employees[r].name (ngModelChange)= "addEmployee($event, r)"   name="emp" required>
+                                <option *ngFor="let employee of employees" [ngValue]="employee.firstName">{{employee.firstName}}</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td *ngFor="let hour of schedule.tableData; let h = index" class="shiftCellz">
+                        <div class="form-group" >
+                             <select class="form-control" type="text" [(ngModel)]=schedule.tableData[h].assignedShifts[r] (ngModelChange)= "updateMissingShifts(h, r); checkLunches()"   name="cell" required>
+                                <option *ngFor="let shift of shiftsFromDb" [ngValue]="shift.name">{{shift.name}}</option>
+                            </select>
+                        </div>           
+                    </td>
+                    <td [ngClass]="{'lunchClass': !this.schedule.employees[r].hasLunch}" >{{this.schedule.employees[r].hasLunch}}</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-default" (click)="removeEmployee(r)" >X</button>
+                    </td>
+                </tr>
+                <tr>                 
+                </tr>
+            </tbody>
+            <tfoot >
+                <tr >   
+                    <td ><button class="btn btn-sm btn-primary" (click)="addRow()" >Lägg till personal</button></td>
+                    <td *ngFor="let hour of schedule.tableData; let b = index" style="color: red">
+                      <ul class="missingShiftList" >
+                        <li  *ngFor="let ms of schedule.tableData[b].missingShifts">{{ms}}</li>
+                      </ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="form-group" >
+            <label>Ansvarig:</label>
+            <input class="form-control" class="info" type="text" [(ngModel)]="this.schedule.responsible" name="responsible" required>
+        </div>
+        <br>
+        <br>
+        <div class="form-group" >
+            <label>Övrig info:</label>
+            <input class="form-control" class="info" type="text" [(ngModel)]="this.schedule.info" name="info" required>
+        </div>
+
+        <br>
+        <br>
+        <button class="btn btn-success" (click)="saveSchema()" >Spara Schema</button>
+    <br/>
+    <br/>
+    <hr>
+<!-- ************************************************************************** -->
+    <div *ngIf="(schedule.tableData)" class="container" id="schemaGenerator2">
+        
+            <br/>
+            <div id="formattedDate">{{formattedDate}}</div>
+            <br/>
+            <table class="table table-striped table-bordered" >
+                <thead>
+                    <tr>
+                        <td id="empNameHead"></td>    
+                        <td class="timeCellExport" *ngFor="let hour of schedule.tableData; let y = index">{{hour.hour}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let row of schedule.employees; let r = index">
+                        <td class="empNameExport">
+                            {{schedule.employees[r].name}}
+                        </td>
+                        <td *ngFor="let hour of schedule.tableData; let h = index" class="shiftCell" style="text-transform: uppercase">
+                            {{schedule.tableData[h].assignedShifts[r]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <div class="infoExport">
+                Ansvarig: {{this.schedule.responsible}}
+            </div>
+            <br>
+            <div class="infoExport">
+                {{this.schedule.info}}
+            </div>
+            <br>
+        <table id="shiftLegend">
+        <tr>
+            <td>B = sdfgbutik</td>
+        </tr>
+        <tr>
+            <td>BV= bokad visning</td>
+        </tr>
+        <tr>
+            <td >C= cirkulera</td>
+        </tr>
+        <tr>
+            <td >E = entr&eacute;</td>
+        </tr>
+        <tr>
+            <td >Exp = Experiment</td>
+        </tr>
+        <tr>
+            <td >K = kontor</td>
+        </tr>
+        <tr>
+            <td >L = lunch</td>
+        </tr>
+        <tr>
+            <td >M = m&ouml;te</td>
+        </tr>
+        <tr>
+            <td>P = program</td>
+        </tr>
+        <tr>
+            <td >St = Stänga</td>
+        </tr>
+        <tr>
+            <td >VE = visning på engelska</td>
+        </tr>
+        <tr>
+            <td >VS = visning på svenska</td>
+        </tr>
+        <tr>
+            <td >Ö = öppna</td>
+        </tr>
+    </table>
+    </div>
+</div>
+
+

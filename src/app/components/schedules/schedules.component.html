@@ -1,0 +1,108 @@
+<div *ngIf="(isAdmin)" class="row">
+  <div class="monthButton col-sm-1 col-md-offset-2">
+      <button class="pull-right btn btn-primary" (click)="showPreviousMonth()"><span class="glyphicon glyphicon-triangle-left"></span></button>  
+  </div>
+  <div class="col-sm-4 text-center"> Gällande Scheman
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>
+            Schema
+          </td>
+          <td class="text-center">
+            Sparad
+          </td>
+          <td class="text-center">
+          </td>
+          <td class="text-center">
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of editedSchedules; let h = index">
+          <td>
+            <a [routerLink]="['/schedule/' + year + '/' + month + '/' + schedule.$key]">{{schedule.title}}</a>
+          </td>
+          <td class="text-center">
+            {{lastEdited[h]}}
+          </td>
+          <td class="text-center edited">
+            <div *ngIf="(schedule.editedBy)"><span class="glyphicon glyphicon-pencil"></span></div>
+          </td>
+          <td class="text-center">
+            <div class="btn btn-sm btn-basic" (click)="deleteSchedule(schedule.$key)"><span class="glyphicon glyphicon-trash"></span></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-4 text-center"> Originalscheman
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>
+            Schema
+          </td>
+          <td class="text-center">
+            Sparad
+          </td>
+          <td class="text-center">
+  
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let originalSchedule of testSchedules; let h = index">
+          <td>
+            <a [routerLink]="['/schedule/' + year + '/' + month + '/' + originalSchedule.$key]">{{originalSchedule.title}}</a>
+          </td>
+          <td class="text-center">
+            {{olastEdited[h]}}
+          </td>
+          <td class="text-center">
+            <div class="btn btn-sm btn-basic" (click)="deleteSchedule(originalSchedule.$key)"><span class="glyphicon glyphicon-trash"></span></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="monthButton col-sm-1">
+    <button class="btn btn-primary" (click)="showNextMonth()"><span class="glyphicon glyphicon-triangle-right"></span></button>  
+  </div>
+      <!-- <div class="monthButton col-md-1 col-md-offset-2">
+      <button class="pull-right btn btn-primary" (click)="showPreviousMonth()"><</button>  
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>
+            Schema
+          </td>
+          <td class="text-center">
+            Sparad
+          </td>
+          <td class="text-center">
+            Ta bort
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedules; let h = index">
+          <td>
+            <a [routerLink]="['/schedule/' + year + '/' + month + '/' + schedule.$key]">{{schedule.title}}</a>
+          </td>
+          <td class="text-center">
+            {{lastEdited[h]}}
+          </td>
+          <td class="text-center">
+            <div class="btn btn-sm btn-danger" (click)="deleteSchedule(schedule.$key)">x</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+      <div class="monthButton col-md-1">
+        <button class="btn btn-primary" (click)="showNextMonth()">></button>  
+    </div> -->
+  </div>

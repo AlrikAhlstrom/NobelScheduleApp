@@ -1,0 +1,12 @@
+<div [formGroup]="multiEmailForm" >
+  <div formArrayName="emails" >
+    <div *ngFor="let group of multiEmailForm.controls.emails.controls; let i=index">
+      <div formGroupName= {{i}} class="input-group">
+        <input formControlName="email" type="text" class="form-control wider">
+        <span class="input-group-btn">
+          <div type="button" class="btn btn-basic btn-sm glyphicon glyphicon-minus pull-right" (click)="deleteEmailForm(i)"></div></span>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>  

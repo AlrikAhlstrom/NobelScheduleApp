@@ -1,0 +1,20 @@
+.more-left {
+    margin-left: -200px;
+}
+
+.more-right {
+    margin-right: -100px;
+}
+
+.wider {
+    width: 300px;
+}
+
+.wider-container {
+    width: 335px;
+}
+
+.btn-basic:hover {
+    background-color: black;
+}
+

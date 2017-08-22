@@ -1,0 +1,102 @@
+<div  *ngIf="(isAdmin)" class="row" id="schemaGenerator">
+  <div class="col-md-6 pull-left more-left">
+    <h4>Personal</h4>
+    <table class="table table-condensed table-striped" style="white-space: nowrap">
+      <thead>
+        <tr>
+          <th>
+            Förnamn
+          </th>
+          <th>
+            Efternamn
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            Titel
+          </th>
+          <th>
+            Visningsklar
+          </th>
+          <th>
+            Admin
+          </th>
+          <th>
+            Uppdatera
+          </th>
+          <th class="text-center">
+            Ta bort
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees; let i = index">
+          <td [innerHtml]="employee.firstName"></td>
+          <td [innerHtml]="employee.lastName"></td>
+          <td >
+            <div *ngFor="let mail of employee.emails">
+              <p [innerHtml]="mail" ></p>
+            </div>
+          </td>
+          <td  [innerHtml]="employee.title"></td>
+          <td class="text-center" [innerHtml]="getBool(employee.tourReady)">
+          </td>
+          <td class="text-center" [innerHtml]="getBool(employee.admin)"></td>
+          <td class="text-center">
+            <div class="btn btn-basic btn-sm" (click)="editEmployee(employees[i].firstName, employees[i].lastName, employees[i].title, employees[i].tourReady, employees[i].admin, employees[i].emails, employees[i].$key)"><span class="glyphicon glyphicon-pencil"></span></div>
+          </td>
+          <td class="text-center">
+            <div class="btn btn-basic btn-sm" (click)="deleteEmployee(employee.$key)"><span class="glyphicon glyphicon-trash"></span></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3 pull-right">
+    <div>
+      <form>
+        <h4>Lägg till personal</h4>
+        <div class="form-group">
+          <label>Förnamn</label>
+          <input class="form-control" type="text" [(ngModel)]="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label>Efternamn</label>
+          <input class="form-control" type="text" [(ngModel)]="lastName" name="lastName" required>
+        </div> 
+          <form [formGroup]="emailFormGroup" class="form-group wider-container" >
+            <label class="">Email</label>
+              <label class="pull-right" >
+                <div class="btn btn-basic btn-sm glyphicon glyphicon-plus" (click)="addMultiValueControl()"></div>
+            </label>
+            <emailForm [group]="emailFormGroup.controls.multiEmailForm" class="form-group" (change)="deleteEmail($event)"></emailForm>
+          </form> 
+          <div class="form-group" >
+            <label>Titel</label>
+            <select class="form-control employeeName" type="text" [(ngModel)]="title" (ngModelChange)="selectType($event)" name="title" required>
+              <option value="museilärare">museilärare</option>
+              <option value="butiken">butiken</option>
+              <option value="annat">annat</option>
+            </select>
+          </div>
+          <div class="form-group" >
+            <label>Visningsklar</label>
+            <select class="form-control employeeName" type="text" [(ngModel)]=tourReady (ngModelChange)="selectTourReady($event)" name="tourReady" required>
+              <option value="true">Ja</option>
+              <option value="false">Nej</option>
+            </select>
+          </div>
+          <div class="form-group" >
+            <label>Admin</label>
+            <select class="form-control employeeName" type="text" [(ngModel)]=admin (ngModelChange)="selectAdmin($event)" name="admin" required>
+              <option value="true">Ja</option>
+              <option value="false">Nej</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="saveEmployee()">Spara</button>
+          <button type="button" class="btn btn-success pull-right" (click)="clearEmployee()">Rensa Formulär</button>
+          <!-- <pre>Emails {{emailFormGroup.value | json}}</pre> -->  
+    </form>
+  </div>
+</div>

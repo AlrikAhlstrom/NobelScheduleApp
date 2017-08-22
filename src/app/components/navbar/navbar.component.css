@@ -1,0 +1,18 @@
+.adminDropdown {
+    color:#ffffff;
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 21px;
+    position: relative;
+    display: block;
+}
+
+.adminDropdown:hover {
+    background-color: #1967be;
+}
+
+.smallText {
+    font-size: small
+}
